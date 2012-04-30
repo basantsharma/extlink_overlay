@@ -1,0 +1,35 @@
+.overlayOuter {
+  display:none;
+  height:100%;
+  left:0;
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:100001;
+ }
+
+.overlayOuter .overlayInner {
+  background:url(ajax-loader.gif) no-repeat 50% 50% #000;
+  opacity:0.7;
+  height:100%;
+  left:25px;
+  position:absolute;
+  top:0;
+  width:100%;
+  z-index:100001;
+}
+
+.overlayOuter #frame-content {
+  position:absolute;
+  z-index:100001;
+  display:none;
+}
+
+.overlayOuter #frame-close {
+  height:100%;
+  width:25px;
+  float:left;
+  background:url('close.gif') no-repeat #000;
+  z-index:100001;
+  cursor:pointer;
+}

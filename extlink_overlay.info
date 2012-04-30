@@ -1,0 +1,13 @@
+name = Extlink Overlay
+description = Opens external links in overlay
+package = User interface
+core = 7.x
+dependencies[] = extlink
+core = 7.x
+; Base module files
+files[] =extlink_overlay.module
+; Information added by drupal.org packaging script on 2011-12-12
+version = "7.x-1.x-dev"
+core = "7.x"
+project = "extlink overlay"
+datestamp = "1323648767"

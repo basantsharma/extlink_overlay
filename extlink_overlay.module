@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * @file
+ * Provides a refferal management for admin for Drupal commerce
+ */
+
+/**
+ * Implementation of hook_init().
+ */
+function extlink_overlay_init() {
+  $path = drupal_get_path('module', 'extlink_overlay');
+  drupal_add_js($path.'/extlink_overlay.js');
+  drupal_add_css($path.'/extlink_overlay.css');
+}
