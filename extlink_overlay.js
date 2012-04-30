@@ -2,21 +2,27 @@
 (function ($) {
   Drupal.behaviors.extlink_overlay = {
     attach: function (context, settings) {
-      $('.ext').live('click',function(event) {
-        event.preventDefault();
-        var $this = $(this);
-        var $url = $this.attr("href");
-        var $structure = '<div class="overlayOuter"><div class="overlayInner"/><iframe src='+$url+' id="frame-content"        width="80%" height = "100%"/><div id="frame-close"/></div>';
-        $('body').append($structure);
-        $(".overlayOuter").fadeIn(300);
-        $('iframe#frame-content').load(function() {
-          $(".overlayInner").css({'background-image':'none'});
-          $('iframe#frame-content').slideDown(300);
+      if (Drupal.settings.extlink_overlay.extOverlayPopUp) {
+        $('.'+ Drupal.settings.extlink.extClass).live('click',function(event) {
+          event.preventDefault();
+          var $structure = '<div class="overlayOuter"><div class="overlayInner"/><iframe src=' + $(this).attr("href") + ' id="frame-content"    width="80%" height = "100%"/><div id="frame-close"/></div>';
+          $('body').append($structure);
+          $(".overlayOuter").fadeIn(300);
+          $('iframe#frame-content').load(function() {
+            $(".overlayInner").css({'background-image':'none'});
+            $('iframe#frame-content').slideDown(300);
+          });
         });
-      });
+      }
       $('#frame-close').live('click',function(event) {
         $('iframe#frame-content').slideUp(300);
         $(".overlayOuter").fadeOut(300).remove();
+      });
+      $('#edit-extlink-overlay-popup:checkbox').click(function () {
+        if ($(this).is(':checked'))
+          $('#edit-extlink-alert:checkbox').removeAttr('checked').attr('disabled','disabled');
+        else
+          $('#edit-extlink-alert:checkbox').removeAttr('disabled');
       });
     }
   }
