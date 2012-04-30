@@ -23,6 +23,7 @@
   position:absolute;
   z-index:100001;
   display:none;
+  left:25px;
 }
 
 .overlayOuter #frame-close {
