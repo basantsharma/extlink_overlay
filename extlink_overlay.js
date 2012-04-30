@@ -2,6 +2,8 @@
 (function ($) {
   Drupal.behaviors.extlink_overlay = {
     attach: function (context, settings) {
+      if ($('#edit-extlink-overlay-popup:checkbox').is(':checked'))
+          $('#edit-extlink-alert:checkbox').removeAttr('checked').attr('disabled','disabled');
       if (Drupal.settings.extlink_overlay.extOverlayPopUp) {
         $('.'+ Drupal.settings.extlink.extClass).live('click',function(event) {
           event.preventDefault();
